@@ -19,7 +19,7 @@ First of all I would like to thanks `https://github.com/iamj0ker/bypass-403`
 
 # Installation
 
-* `git clone https://github.com/iamj0ker/bypass-403`
+* `https://github.com/mrx-arafat/Web-403-Bypass-dos2unix`
 * `cd bypass-403`
 * `chmod +x bypass-403.sh`
 * `sudo apt install figlet`  - If you are unable to see the logo as in the screenshot
