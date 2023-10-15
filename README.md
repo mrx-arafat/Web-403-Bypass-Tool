@@ -1,6 +1,6 @@
 # Bypass-403 With status code 
 
-First of all I would like to thanks `https://github.com/iamj0ker/bypass-403`
+First of all I would like to thank `https://github.com/iamj0ker/bypass-403`
 
 - A simple script just made for self use for bypassing 403
 - It can also be used to compare responses on verious conditions as shown in the below snap
