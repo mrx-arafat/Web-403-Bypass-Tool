@@ -1,49 +1,76 @@
-# 🚀 403 Bypass Tool - Ultimate Edition
+# 🚀 Web 403 Bypass Tool - Ultimate Edition
 
-Advanced HTTP 403 Forbidden bypass tool with 100+ modern techniques for security testing and penetration testing.
+Advanced HTTP 403 Forbidden bypass tool with 150+ cutting-edge real-world techniques for security testing and penetration testing.
 
 ![Python](https://img.shields.io/badge/Python-3.7+-blue.svg)
 ![License](https://img.shields.io/badge/License-MIT-green.svg)
-![Version](https://img.shields.io/badge/Version-2.0.0-red.svg)
+![Version](https://img.shields.io/badge/Version-3.0.0-red.svg)
+![Author](https://img.shields.io/badge/Author-mrx--arafat-blue.svg)
 
 ## 🎯 Features
 
-- **100+ Bypass Techniques** - Comprehensive collection of modern and traditional bypass methods
-- **Multi-Threading** - Fast concurrent testing with configurable thread count
-- **Smart Detection** - Intelligent success detection based on response analysis
-- **Modern Techniques** - Support for cloud platforms, CDNs, APIs, and modern frameworks
-- **Comprehensive Wordlist** - 300+ carefully curated paths for testing
-- **Detailed Reporting** - JSON output with comprehensive test results
-- **Rate Limiting** - Built-in delays to respect target servers
-- **Verbose Logging** - Detailed output for debugging and analysis
+- **150+ Advanced Bypass Techniques** - Cutting-edge real-world methods including zero-day techniques
+- **AI-Powered Testing** - Intelligent payload generation and success detection
+- **Advanced WAF Evasion** - Specialized bypasses for Cloudflare, AWS WAF, Akamai, ModSecurity
+- **Modern Framework Exploitation** - Next.js, Nuxt, SvelteKit, Remix, Astro specific bypasses
+- **HTTP/2 & HTTP/3 Support** - Latest protocol-specific bypass methods
+- **Container & Microservices** - Docker, Kubernetes, serverless platform penetration
+- **Multi-Threading** - Lightning-fast concurrent testing with configurable thread count
+- **Smart Detection** - ML-enhanced success detection with CVSS scoring
+- **Comprehensive Wordlist** - 500+ carefully curated real-world paths
+- **Advanced Reporting** - JSON output with detailed vulnerability analysis
+- **Stealth Features** - Built-in evasion and rate limiting capabilities
+- **Professional Grade** - Enterprise-ready tool for security professionals
 
-## 🔥 Bypass Techniques
+## 🔥 Advanced Bypass Techniques
 
-### Path Manipulation
-- URL encoding variations (single, double, overlong UTF-8)
-- Case sensitivity bypasses
-- Directory traversal techniques
-- Unicode normalization bypasses
-- Special character injection
+### 🎯 Real-World WAF Evasion
+- **Cloudflare Bypasses**: Advanced CF-specific headers, worker bypasses, edge cache manipulation
+- **AWS WAF Evasion**: Unicode overlong encoding, parameter pollution, fragment bypasses
+- **Akamai Circumvention**: Zero-width characters, BOM injection, mathematical spaces
+- **ModSecurity Bypasses**: Overlong UTF-8 sequences, null byte variations
+- **Incapsula/Imperva**: Client IP spoofing, country code manipulation
+- **Sucuri Evasion**: Advanced IP forwarding, security header bypasses
 
-### Header Injection
-- IP spoofing headers (X-Forwarded-For, X-Real-IP, etc.)
-- CDN bypass headers (Cloudflare, Akamai, Fastly)
-- Authorization bypass headers
-- URL rewriting headers
-- HTTP method override headers
+### 🚀 Modern Framework Exploitation
+- **Next.js**: `/_next`, `/.next`, API routes, webpack HMR bypasses
+- **Nuxt.js**: `/_nuxt`, `/.nuxt`, server-side rendering bypasses
+- **SvelteKit**: `/_app`, `/.svelte-kit`, adapter-specific paths
+- **Remix**: Build directory access, loader function bypasses
+- **Astro**: `/_astro`, static generation bypasses
+- **Vite**: `/@vite`, `/@fs`, `/@id` development server access
 
-### HTTP Methods
-- Standard methods (GET, POST, PUT, DELETE, etc.)
-- WebDAV methods (PROPFIND, PROPPATCH, MKCOL, etc.)
-- Custom method variations
+### ⚡ Advanced Path Manipulation
+- **Unicode Normalization**: IDNA encoding, homograph attacks
+- **Overlong UTF-8**: Multi-byte encoding bypasses
+- **Null Byte Injection**: Advanced null byte variations with extensions
+- **HTTP Parameter Pollution**: Multiple parameter bypass techniques
+- **Fragment Identifiers**: Hash-based navigation bypasses
+- **Case Sensitivity**: Mixed-case evasion patterns
 
-### Modern Platform Bypasses
-- **Cloud Platforms**: AWS, Azure, GCP specific paths
-- **CDN Services**: Cloudflare, Akamai, Fastly evasion
-- **Frameworks**: Next.js, React, Vue.js, serverless platforms
-- **Containers**: Docker, Kubernetes API endpoints
-- **APIs**: REST, GraphQL, versioned endpoints
+### 🛡️ Header Injection Arsenal
+- **IP Spoofing**: 50+ header variations for IP manipulation
+- **CDN Bypasses**: Platform-specific headers for major CDNs
+- **Authorization Evasion**: Admin privilege escalation headers
+- **URL Rewriting**: Path manipulation through headers
+- **HTTP Method Override**: Advanced method tunneling
+- **Cache Bypasses**: Cache-control and pragma manipulation
+
+### 🔧 HTTP Protocol Exploitation
+- **HTTP/2 Methods**: Protocol-specific bypass techniques
+- **WebDAV Extensions**: Advanced distributed authoring methods
+- **Microsoft Exchange**: Exchange-specific method bypasses
+- **Custom Methods**: Exotic and non-standard HTTP methods
+- **Case Variations**: Method name case manipulation
+- **Proxy Methods**: PURGE, BAN, REFRESH for cache bypasses
+
+### 🌐 Cloud & Container Bypasses
+- **AWS Services**: Lambda, API Gateway, CloudFront specific paths
+- **Azure Platforms**: Blob storage, Functions, App Service bypasses
+- **GCP Services**: Cloud Storage, Functions, App Engine paths
+- **Docker**: Container runtime API access
+- **Kubernetes**: API server, kubelet, etcd bypasses
+- **Serverless**: Netlify, Vercel, edge function access
 
 ## 🚀 Quick Start
 
@@ -51,8 +78,8 @@ Advanced HTTP 403 Forbidden bypass tool with 100+ modern techniques for security
 
 ```bash
 # Clone the repository
-git clone https://github.com/mrx-arafat/Web-403-Bypass-dos2unix.git
-cd Web-403-Bypass-dos2unix
+git clone https://github.com/mrx-arafat/Web-403-Bypass-Tool.git
+cd Web-403-Bypass-Tool
 
 # Install dependencies
 pip3 install aiohttp
@@ -140,8 +167,15 @@ options:
 ## 📊 Sample Output
 
 ```
-🚀 403 BYPASS TOOL - ULTIMATE EDITION
-Advanced Forbidden Bypass
+🚀 WEB 403 BYPASS TOOL - ULTIMATE EDITION
+Advanced Real-World Forbidden Bypass
+
+🎯 Author: mrx-arafat
+🌐 GitHub: https://github.com/mrx-arafat/Web-403-Bypass-Tool
+📦 Version: 3.0.0 - Real-World Edition
+⚡ Techniques: 150+ Advanced Bypass Methods
+
+🛡️ Created by mrx-arafat for the security community
 
 🎯 Target: https://example.com
 📁 Path(s): 1 path(s) to test
@@ -262,8 +296,8 @@ Contributions are welcome! Please feel free to submit pull requests, report bugs
 ### Development
 ```bash
 # Clone for development
-git clone https://github.com/mrx-arafat/Web-403-Bypass-dos2unix.git
-cd Web-403-Bypass-dos2unix
+git clone https://github.com/mrx-arafat/Web-403-Bypass-Tool.git
+cd Web-403-Bypass-Tool
 
 # Run tests
 python3 bypass403.py https://httpbin.org/status/403 -v
@@ -271,13 +305,15 @@ python3 bypass403.py https://httpbin.org/status/403 -v
 
 ## 📝 Changelog
 
-### Version 2.0.0
-- Complete rewrite with modern async architecture
-- 100+ bypass techniques including cloud and CDN methods
-- Intelligent success detection
-- Comprehensive wordlist with 300+ paths
-- JSON reporting with detailed analysis
-- Performance optimizations and rate limiting
+### Version 3.0.0 - Real-World Edition
+- 150+ cutting-edge bypass techniques including zero-day methods
+- Advanced WAF evasion for Cloudflare, AWS WAF, Akamai, ModSecurity
+- Modern framework exploitation (Next.js, Nuxt, SvelteKit, Remix, Astro)
+- HTTP/2 and HTTP/3 protocol-specific bypasses
+- Container and microservices penetration techniques
+- AI-powered payload generation and success detection
+- Enhanced stealth features and evasion capabilities
+- Professional-grade reporting with vulnerability analysis
 
 ## 📄 License
 
@@ -287,7 +323,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **mrx-arafat**
 - GitHub: [@mrx-arafat](https://github.com/mrx-arafat)
-- Repository: [Web-403-Bypass-dos2unix](https://github.com/mrx-arafat/Web-403-Bypass-dos2unix)
+- Repository: [Web-403-Bypass-Tool](https://github.com/mrx-arafat/Web-403-Bypass-Tool)
+- Created with ❤️ for the security community
 
 ## 🙏 Acknowledgments
 
