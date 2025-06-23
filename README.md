@@ -1,84 +1,19 @@
-# 🚀 Web 403 Bypass Tool - Advanced Edition
+# 🚀 403 Bypass Tool - Professional Edition
 
-Advanced HTTP 403 Forbidden bypass tool with 150+ cutting-edge real-world techniques for security testing and penetration testing, optimized for maximum performance and efficiency, with advanced visualization and integration capabilities.
+A comprehensive web application for testing 403 Forbidden bypass techniques with 50+ advanced methods.
 
-![Python](https://img.shields.io/badge/Python-3.7+-blue.svg)
-![License](https://img.shields.io/badge/License-MIT-green.svg)
-![Version](https://img.shields.io/badge/Version-4.0.0-red.svg)
-![Author](https://img.shields.io/badge/Author-mrx--arafat-blue.svg)
+## 🌟 Features
 
-## 🎯 Features
-
-- **150+ Advanced Bypass Techniques** - Cutting-edge real-world methods including zero-day techniques
-- **Web Interface** - User-friendly web UI for easy scanning and result visualization
-- **Advanced Visualization** - Interactive charts, HTML/PDF reports, and data export
-- **Tool Integration** - Seamless integration with Nmap, Dirsearch, Nuclei, and more
-- **Optimized Performance** - Smart caching, adaptive concurrency, and intelligent request batching
-- **Advanced WAF Evasion** - Specialized bypasses for Cloudflare, AWS WAF, Akamai, ModSecurity
-- **Modern Framework Exploitation** - Next.js, Nuxt, SvelteKit, Remix, Astro specific bypasses
-- **GraphQL & JWT Bypasses** - Specialized techniques for modern API authentication
-- **HTTP/2 & HTTP/3 Support** - Latest protocol-specific bypass methods
-- **Container & Microservices** - Docker, Kubernetes, serverless platform penetration
-- **Adaptive Multi-Threading** - Dynamic concurrency adjustment based on server response
-- **Smart Prioritization** - Machine learning-based test case prioritization for faster results
-- **Comprehensive Wordlist** - 500+ carefully curated real-world paths
-- **Advanced Reporting** - Detailed JSON output with performance metrics and vulnerability analysis
-- **Parallel Processing** - Shell script version with parallel execution for faster results
-- **Professional Grade** - Enterprise-ready tool for security professionals
-
-## 🔥 Advanced Bypass Techniques
-
-### 🎯 Real-World WAF Evasion
-- **Cloudflare Bypasses**: Advanced CF-specific headers, worker bypasses, edge cache manipulation
-- **AWS WAF Evasion**: Unicode overlong encoding, parameter pollution, fragment bypasses
-- **Akamai Circumvention**: Zero-width characters, BOM injection, mathematical spaces
-- **ModSecurity Bypasses**: Overlong UTF-8 sequences, null byte variations
-- **Incapsula/Imperva**: Client IP spoofing, country code manipulation
-- **Sucuri Evasion**: Advanced IP forwarding, security header bypasses
-
-### 🚀 Modern Framework Exploitation
-- **Next.js**: `/_next`, `/.next`, API routes, webpack HMR bypasses
-- **Nuxt.js**: `/_nuxt`, `/.nuxt`, server-side rendering bypasses
-- **SvelteKit**: `/_app`, `/.svelte-kit`, adapter-specific paths
-- **Remix**: Build directory access, loader function bypasses
-- **Astro**: `/_astro`, static generation bypasses
-- **Vite**: `/@vite`, `/@fs`, `/@id` development server access
-
-### ⚡ Advanced Path Manipulation
-- **Unicode Normalization**: IDNA encoding, homograph attacks
-- **Overlong UTF-8**: Multi-byte encoding bypasses
-- **Null Byte Injection**: Advanced null byte variations with extensions
-- **HTTP Parameter Pollution**: Multiple parameter bypass techniques
-- **Fragment Identifiers**: Hash-based navigation bypasses
-- **Case Sensitivity**: Mixed-case evasion patterns
-
-### 🛡️ Header Injection Arsenal
-- **IP Spoofing**: 50+ header variations for IP manipulation
-- **CDN Bypasses**: Platform-specific headers for major CDNs
-- **Authorization Evasion**: Admin privilege escalation headers
-- **URL Rewriting**: Path manipulation through headers
-- **HTTP Method Override**: Advanced method tunneling
-- **Cache Bypasses**: Cache-control and pragma manipulation
-
-### 🔧 HTTP Protocol Exploitation
-- **HTTP/2 Methods**: Protocol-specific bypass techniques
-- **WebDAV Extensions**: Advanced distributed authoring methods
-- **Microsoft Exchange**: Exchange-specific method bypasses
-- **Custom Methods**: Exotic and non-standard HTTP methods
-- **Case Variations**: Method name case manipulation
-- **Proxy Methods**: PURGE, BAN, REFRESH for cache bypasses
-
-### 🌐 Cloud & Container Bypasses
-- **AWS Services**: Lambda, API Gateway, CloudFront specific paths
-- **Azure Platforms**: Blob storage, Functions, App Service bypasses
-- **GCP Services**: Cloud Storage, Functions, App Engine paths
-- **Docker**: Container runtime API access
-- **Kubernetes**: API server, kubelet, etcd bypasses
-- **Serverless**: Netlify, Vercel, edge function access
+- **50+ Bypass Techniques**: Header manipulation, path variations, method changes, encoding tricks
+- **Batch Testing**: Test multiple URLs simultaneously
+- **Professional Web Interface**: Clean, responsive design with real-time results
+- **Multiple Test Modes**: Quick (15), Medium (30), Full (50+ techniques)
+- **Detailed Analytics**: Success rates, response analysis, timing metrics
+- **Production Ready**: Docker support, health checks, CI/CD pipeline
 
 ## 🚀 Quick Start
 
-### Installation
+### Local Development
 
 ```bash
 # Clone the repository
@@ -86,337 +21,173 @@ git clone https://github.com/mrx-arafat/Web-403-Bypass-Tool.git
 cd Web-403-Bypass-Tool
 
 # Install dependencies
-pip3 install -r requirements.txt
+pip install -r requirements.txt
 
-# Make executable
-chmod +x bypass403.py
-chmod +x bypass-403.sh
+# Run the application
+python app.py
 ```
 
-### Basic Usage
+Visit `http://localhost:8000` to access the web interface.
 
-#### Standard Version
-```bash
-# Test single path
-python3 bypass403.py https://target.com
-
-# Test specific path
-python3 bypass403.py https://target.com -p /admin
-
-# Test with wordlist
-python3 bypass403.py https://target.com -p wordlist.txt
-
-# High-performance scan with optimizations
-python3 bypass403.py https://target.com -p wordlist.txt -t 50 --adaptive-concurrency --smart-prioritization
-
-# Generate detailed report
-python3 bypass403.py https://target.com -p wordlist.txt -o report.json -v
-```
-
-#### Advanced Version with Visualization & Integration
-```bash
-# Run scan with visualization
-python3 bypass403_advanced.py scan https://target.com --visualize
-
-# Run scan with HTML report
-python3 bypass403_advanced.py scan https://target.com --visualize --report-format html
-
-# Run scan with all report formats (HTML, PDF, CSV)
-python3 bypass403_advanced.py scan https://target.com --visualize --report-format all
-
-# Run scan with tool integrations
-python3 bypass403_advanced.py scan https://target.com --integrations nmap,dirsearch
-
-# Run scan with all available integrations
-python3 bypass403_advanced.py scan https://target.com --integrations all
-
-# Generate visualizations from existing report
-python3 bypass403_advanced.py visualize reports/bypass_report_1234567890.json --format all
-```
-
-#### Shell Script Version (Fast & Simple)
-```bash
-# Basic usage
-bash bypass-403.sh https://target.com admin
-
-# With parallel processing (10 threads)
-bash bypass-403.sh https://target.com admin -t 10
-
-# With output file
-bash bypass-403.sh https://target.com admin -o results.txt -v
-```
-
-## 📊 Advanced Usage
-
-### Performance Optimization
-```bash
-# Adaptive concurrency (automatically adjusts thread count based on response times)
-python3 bypass403.py https://target.com --adaptive-concurrency
-
-# Smart prioritization (learns from successful bypasses to prioritize similar techniques)
-python3 bypass403.py https://target.com --smart-prioritization
-
-# Maximum performance (combines all optimizations)
-python3 bypass403.py https://target.com -t 50 --adaptive-concurrency --smart-prioritization --delay 0.05
-
-# Retry failed requests
-python3 bypass403.py https://target.com --max-retries 5
-
-# Custom batch size for memory optimization
-python3 bypass403.py https://target.com --batch-size 200
-```
-
-### Visualization Options
-```bash
-# Generate HTML report from scan
-python3 bypass403_advanced.py scan https://target.com --visualize --report-format html
-
-# Generate PDF report from scan
-python3 bypass403_advanced.py scan https://target.com --visualize --report-format pdf
-
-# Generate CSV export of successful bypasses
-python3 bypass403_advanced.py scan https://target.com --visualize --report-format csv
-
-# Visualize existing report
-python3 bypass403_advanced.py visualize reports/bypass_report_1234567890.json --format html
-```
-
-### Integration Options
-```bash
-# Run with Nmap integration
-python3 bypass403_advanced.py scan https://target.com --integrations nmap --nmap-ports "80,443,8080,8443"
-
-# Run with Dirsearch integration
-python3 bypass403_advanced.py scan https://target.com --integrations dirsearch --dirsearch-extensions "php,html,js"
-
-# Run with Nuclei integration
-python3 bypass403_advanced.py scan https://target.com --integrations nuclei --nuclei-templates "http/misconfiguration"
-
-# Run with Wayback Machine integration
-python3 bypass403_advanced.py scan https://target.com --integrations wayback
-
-# Run with all available integrations
-python3 bypass403_advanced.py scan https://target.com --integrations all
-```
-
-## 📁 File Structure
-
-```
-├── bypass403.py          # Main bypass tool (standard version)
-├── bypass403_advanced.py # Advanced version with visualization & integration
-├── visualizer.py         # Visualization module for reports
-├── integrations.py       # Integration with other security tools
-├── bypass-403.sh         # Shell script version (simple)
-├── wordlist.txt          # Comprehensive path wordlist
-├── README.md             # Documentation
-└── requirements.txt      # Python dependencies
-```
-
-## 🛡️ Command Line Options
-
-```
-usage: bypass403.py [-h] [-p PATH] [-t THREADS] [--timeout TIMEOUT] 
-                    [--delay DELAY] [-o OUTPUT] [-f FORMAT] [-v] url
-
-🚀 403 Bypass Tool - Ultimate Edition
-
-positional arguments:
-  url                   Target URL
-
-options:
-  -h, --help            Show help message
-  -p, --path PATH       Path to test or wordlist file (default: /admin)
-  -t, --threads THREADS Number of threads (default: 20)
-  --timeout TIMEOUT     Request timeout in seconds (default: 10)
-  --delay DELAY         Delay between requests in seconds (default: 0.1)
-  -o, --output OUTPUT   Output file for report
-  -f, --format FORMAT   Output format (default: json)
-  -v, --verbose         Verbose output
-```
-
-## 📊 Sample Output
-
-```
-🚀 WEB 403 BYPASS TOOL - ULTIMATE EDITION
-Advanced Real-World Forbidden Bypass
-
-🎯 Author: mrx-arafat
-🌐 GitHub: https://github.com/mrx-arafat/Web-403-Bypass-Tool
-📦 Version: 3.0.0 - Real-World Edition
-⚡ Techniques: 150+ Advanced Bypass Methods
-
-🛡️ Created by mrx-arafat for the security community
-
-🎯 Target: https://example.com
-📁 Path(s): 1 path(s) to test
-🧵 Threads: 20
-⏱️  Timeout: 10s
-⏳ Delay: 0.1s
-
-🚀 Starting bypass tests...
-
-✅ SUCCESS: Header Bypass: X-Forwarded-For
-   URL: https://example.com/admin
-   Method: GET
-   Status: 200
-   Length: 1234
-   Time: 0.456s
-
-✅ SUCCESS: Path Variation + GET
-   URL: https://example.com/admin/
-   Method: GET
-   Status: 200
-   Length: 1234
-   Time: 0.234s
-
-📊 BYPASS REPORT
-============================================================
-Total Tests: 1500
-Successful Bypasses: 2
-Success Rate: 0.13%
-
-🎯 SUCCESSFUL BYPASSES:
-1. Header Bypass: X-Forwarded-For
-   URL: https://example.com/admin
-   Method: GET
-   Status: 200
-   Response Length: 1234
-
-2. Path Variation + GET
-   URL: https://example.com/admin/
-   Method: GET
-   Status: 200
-   Response Length: 1234
-```
-
-## 🔧 Technical Details
-
-### Success Detection
-The tool uses intelligent success detection based on:
-- **HTTP Status Codes**: 200, 201, 202, 204 (success)
-- **Redirects**: 301, 302, 307, 308 with content
-- **Response Size**: Large responses (>1000 bytes) may indicate success
-- **Content Analysis**: Excludes common error pages
-
-### Rate Limiting
-- Configurable delay between requests
-- Semaphore-based concurrency control
-- Respectful of target server resources
-
-### Error Handling
-- Graceful handling of network errors
-- Timeout management
-- Connection pooling for efficiency
-
-## 🎯 Use Cases
-
-### Penetration Testing
-- Web application security assessment
-- Access control testing
-- Authorization bypass detection
-
-### Bug Bounty Hunting
-- Automated reconnaissance
-- Vulnerability discovery
-- Comprehensive testing coverage
-
-### Security Research
-- Bypass technique development
-- Defense mechanism analysis
-- Security control evaluation
-
-## ⚠️ Legal and Ethical Use
-
-**IMPORTANT**: This tool is designed for authorized security testing only.
-
-### Requirements
-- ✅ **Written Authorization** - Only test systems you own or have explicit permission to test
-- ✅ **Scope Compliance** - Respect the defined testing scope and limitations
-- ✅ **Responsible Disclosure** - Report vulnerabilities through proper channels
-- ✅ **Legal Compliance** - Follow all applicable laws and regulations
-
-### Best Practices
-- Start with conservative settings (low threads, higher delays)
-- Monitor target server performance during testing
-- Document all findings for proper reporting
-- Respect rate limits and server resources
-
-## 🔄 Dependencies
+### Docker Deployment
 
 ```bash
-pip3 install aiohttp
+# Build and run with Docker
+docker-compose up -d
+
+# Or build manually
+docker build -t bypass-tool .
+docker run -p 8000:8000 bypass-tool
 ```
 
-**System Requirements:**
-- Python 3.7+
-- Network connectivity
-- 512MB+ RAM (for large wordlists)
+## 🎯 Usage
 
-## 📈 Performance
+1. **Enter Target URLs**: Add one or more URLs to test (one per line)
+2. **Select Test Mode**: Choose from Quick, Medium, or Full testing
+3. **Configure Settings**: Set timeout and concurrency limits
+4. **Start Testing**: Click "Start Comprehensive Testing"
+5. **Analyze Results**: Review successful bypasses and interesting responses
 
-- **Speed**: 100+ requests/second with adaptive concurrency
-- **Efficiency**: Optimized asynchronous processing with smart caching
-- **Memory**: Intelligent batching for reduced memory footprint
-- **Scalability**: Dynamic thread adjustment based on server response
-- **Caching**: Response caching to eliminate redundant requests
-- **Prioritization**: ML-based technique prioritization for faster results
-- **Parallel Processing**: Shell script version with parallel execution
+### Example URLs to Test
 
-## 🤝 Contributing
+```
+https://api.poe.com/
+https://poe.com/admin
+https://example.com/api/v1
+https://target.com/restricted
+```
 
-Contributions are welcome! Please feel free to submit pull requests, report bugs, or suggest new features.
+## 🛠️ Bypass Techniques
 
-### Development
+### Header Manipulation
+- X-Forwarded-For spoofing
+- X-Real-IP injection
+- X-Originating-IP headers
+- User-Agent variations (Googlebot, Bingbot, etc.)
+- Referer manipulation
+- Host header attacks
+
+### Path Variations
+- Trailing slash manipulation
+- Double slash injection
+- URL encoding variations
+- Case sensitivity tests
+- Unicode normalization
+- Dot segment attacks
+
+### HTTP Methods
+- POST instead of GET
+- PUT, PATCH, DELETE
+- OPTIONS, HEAD, TRACE
+- Method override headers
+
+### Protocol & Content-Type
+- HTTP/1.0 vs HTTP/2
+- Content-Type spoofing
+- Accept header variations
+- Cache control manipulation
+
+### Advanced Techniques
+- Authentication bypass attempts
+- Protocol downgrade attacks
+- Unicode and encoding tricks
+- Custom bypass headers
+
+## 📊 API Endpoints
+
+- `GET /` - Web interface
+- `POST /api/test-bypass` - Main testing endpoint
+- `GET /api/techniques` - Available techniques
+- `GET /health` - Health check
+
+## 🔧 Configuration
+
+### Environment Variables
+
 ```bash
-# Clone for development
+# Application settings
+PORT=8000
+HOST=0.0.0.0
+TIMEOUT=10
+MAX_CONCURRENT=5
+
+# Production settings
+PYTHONUNBUFFERED=1
+```
+
+### Test Modes
+
+- **Quick (15 techniques)**: Basic headers and methods
+- **Medium (30 techniques)**: Extended headers and path variations
+- **Full (50+ techniques)**: All available bypass methods
+
+## 🚀 Production Deployment
+
+### Domain Setup
+
+1. **DNS Configuration**: Point `bypass403.arafatops.com` to your server
+2. **SSL Certificate**: Use Let's Encrypt or Cloudflare SSL
+3. **Reverse Proxy**: Configure Nginx/Apache if needed
+
+### Cloudflare Setup
+
+```bash
+# Add DNS record in Cloudflare
+Type: A
+Name: bypass403
+Content: YOUR_SERVER_IP
+Proxy: Enabled (Orange cloud)
+```
+
+### Server Deployment
+
+```bash
+# Clone and deploy
 git clone https://github.com/mrx-arafat/Web-403-Bypass-Tool.git
 cd Web-403-Bypass-Tool
 
-# Run tests
-python3 bypass403.py https://httpbin.org/status/403 -v
+# Production deployment
+docker-compose up -d
+
+# Or with custom port
+docker run -d -p 80:8000 --name bypass-tool bypass-tool
 ```
 
-## 📝 Changelog
+## 🔒 Security Considerations
 
-### Version 4.0.0 - Performance Edition
-- Optimized performance with smart caching and adaptive concurrency
-- Intelligent request batching for reduced memory footprint
-- ML-based technique prioritization for faster results
-- Response caching to eliminate redundant requests
-- Retry mechanism for handling transient failures
-- Parallel processing in shell script version
-- Comprehensive performance metrics in reports
-- Memory optimization for large-scale testing
+- **Authorized Testing Only**: Only test systems you own or have permission to test
+- **Rate Limiting**: Built-in concurrency limits to prevent abuse
+- **No Data Storage**: No request/response data is stored permanently
+- **Ethical Use**: Tool designed for legitimate security testing
 
-### Version 3.0.0 - Real-World Edition
-- 150+ cutting-edge bypass techniques including zero-day methods
-- Advanced WAF evasion for Cloudflare, AWS WAF, Akamai, ModSecurity
-- Modern framework exploitation (Next.js, Nuxt, SvelteKit, Remix, Astro)
-- HTTP/2 and HTTP/3 protocol-specific bypasses
-- Container and microservices penetration techniques
-- AI-powered payload generation and success detection
-- Enhanced stealth features and evasion capabilities
-- Professional-grade reporting with vulnerability analysis
+## 📈 Performance
 
-## 📄 License
+- **Async Processing**: Concurrent request handling
+- **Optimized Timeouts**: Configurable request timeouts
+- **Resource Management**: Automatic connection pooling
+- **Scalable Architecture**: Docker-ready for horizontal scaling
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+## 🤝 Contributing
 
-## 👨‍💻 Author
+1. Fork the repository
+2. Create a feature branch
+3. Add new bypass techniques or improvements
+4. Submit a pull request
 
-**mrx-arafat**
-- GitHub: [@mrx-arafat](https://github.com/mrx-arafat)
-- Repository: [Web-403-Bypass-Tool](https://github.com/mrx-arafat/Web-403-Bypass-Tool)
-- Created with ❤️ for the security community
+## 📝 License
 
-## 🙏 Acknowledgments
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-- Security research community for bypass technique discoveries
-- Open source contributors and security researchers
-- Ethical hackers and penetration testers worldwide
+## ⚠️ Disclaimer
+
+This tool is for educational and authorized security testing purposes only. Users are responsible for ensuring they have proper authorization before testing any systems.
+
+## 🔗 Links
+
+- **Live Demo**: [bypass403.arafatops.com](https://bypass403.arafatops.com)
+- **GitHub**: [mrx-arafat/Web-403-Bypass-Tool](https://github.com/mrx-arafat/Web-403-Bypass-Tool)
+- **Issues**: [Report bugs or request features](https://github.com/mrx-arafat/Web-403-Bypass-Tool/issues)
 
 ---
 
-**⚡ Ready for next-generation 403 bypass testing!** 🛡️
-
-*Remember: Use responsibly and only on systems you're authorized to test.*
+**Made with ❤️ for the security community**

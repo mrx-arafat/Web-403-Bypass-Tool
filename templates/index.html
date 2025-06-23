@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚀 403 Bypass Tool - Professional Edition</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .main-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+        }
+
+        .url-input-container {
+            position: relative;
+        }
+
+        .url-textarea {
+            width: 100%;
+            min-height: 120px;
+            padding: 15px;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: 'Courier New', monospace;
+            resize: vertical;
+            transition: border-color 0.3s ease;
+        }
+
+        .url-textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .url-help {
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .select-input, .number-input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+        }
+
+        .select-input:focus, .number-input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .test-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .test-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .test-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .results {
+            display: none;
+        }
+
+        .url-result {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 4px solid #667eea;
+        }
+
+        .url-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .url-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #333;
+            word-break: break-all;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .results-section {
+            margin-top: 20px;
+        }
+
+        .results-section h4 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .success-results {
+            color: #28a745;
+        }
+
+        .interesting-results {
+            color: #ffc107;
+        }
+
+        .failed-results {
+            color: #dc3545;
+        }
+
+        .result-item {
+            background: white;
+            padding: 10px 15px;
+            margin-bottom: 8px;
+            border-radius: 6px;
+            border-left: 3px solid;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+        }
+
+        .result-item.success {
+            border-left-color: #28a745;
+            background-color: #f8fff9;
+        }
+
+        .result-item.interesting {
+            border-left-color: #ffc107;
+            background-color: #fffdf5;
+        }
+
+        .result-item.failed {
+            border-left-color: #dc3545;
+            background-color: #fff5f5;
+        }
+
+        .technique-name {
+            font-weight: 600;
+            margin-right: 10px;
+        }
+
+        .status-code {
+            background: #e9ecef;
+            padding: 2px 6px;
+            border-radius: 3px;
+            margin-right: 10px;
+        }
+
+        .response-size {
+            color: #666;
+            font-size: 11px;
+        }
+
+        .footer {
+            text-align: center;
+            color: white;
+            margin-top: 30px;
+            opacity: 0.8;
+        }
+
+        .technique-info {
+            background: #e3f2fd;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .technique-info h4 {
+            color: #1976d2;
+            margin-bottom: 10px;
+        }
+
+        .technique-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            font-size: 13px;
+        }
+
+        .error-message {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #dc3545;
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 403 Bypass Tool</h1>
+            <p>Professional Edition - Comprehensive 403 Forbidden Bypass Testing</p>
+        </div>
+
+        <div class="main-card">
+            <form id="bypassForm">
+                <div class="form-group">
+                    <label for="urls">🎯 Target URLs:</label>
+                    <div class="url-input-container">
+                        <textarea 
+                            id="urls" 
+                            class="url-textarea" 
+                            placeholder="Enter URLs to test (one per line):&#10;&#10;https://api.poe.com/&#10;https://poe.com/admin&#10;https://example.com/api/v1&#10;https://target.com/restricted"
+                            required
+                        ></textarea>
+                        <div class="url-help">
+                            💡 Enter one URL per line. HTTP/HTTPS will be added automatically if missing.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="testMode">🔧 Test Mode:</label>
+                        <select id="testMode" class="select-input">
+                            <option value="quick">⚡ Quick (15 techniques)</option>
+                            <option value="medium" selected>🎯 Medium (30 techniques)</option>
+                            <option value="full">🚀 Full (50+ techniques)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="timeout">⏱️ Timeout (seconds):</label>
+                        <input type="number" id="timeout" class="number-input" value="10" min="5" max="60">
+                    </div>
+                </div>
+
+                <button type="submit" class="test-button" id="testButton">
+                    🚀 Start Comprehensive Testing
+                </button>
+            </form>
+
+            <div class="technique-info">
+                <h4>🛠️ Available Bypass Techniques:</h4>
+                <div class="technique-list">
+                    <div>• Header Manipulation (X-Forwarded-For, X-Real-IP, etc.)</div>
+                    <div>• User-Agent Spoofing (Googlebot, Bingbot, etc.)</div>
+                    <div>• HTTP Method Variations (POST, PUT, PATCH, etc.)</div>
+                    <div>• Path Manipulations (Trailing slash, encoding, etc.)</div>
+                    <div>• Protocol Variations (HTTP/1.0, HTTP/2)</div>
+                    <div>• Content-Type Spoofing</div>
+                    <div>• Authentication Bypass Attempts</div>
+                    <div>• Cache Control Manipulation</div>
+                    <div>• Unicode & Encoding Variations</div>
+                    <div>• Host Header Manipulation</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>🔍 Testing bypass techniques... This may take a few moments.</p>
+        </div>
+
+        <div class="results" id="results"></div>
+
+        <div class="footer">
+            <p>🔒 403 Bypass Tool - Professional Security Testing | bypass403.arafatops.com</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('bypassForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const urls = document.getElementById('urls').value.trim().split('\n').filter(url => url.trim());
+            const testMode = document.getElementById('testMode').value;
+            const timeout = parseInt(document.getElementById('timeout').value);
+            
+            if (urls.length === 0) {
+                alert('Please enter at least one URL to test.');
+                return;
+            }
+            
+            // Show loading
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('results').style.display = 'none';
+            document.getElementById('testButton').disabled = true;
+            
+            try {
+                const response = await fetch('/api/test-bypass', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        urls: urls,
+                        test_mode: testMode,
+                        timeout: timeout,
+                        max_concurrent: 5
+                    })
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                displayResults(data);
+                
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('results').innerHTML = `
+                    <div class="main-card">
+                        <div class="error-message">
+                            <strong>❌ Error:</strong> ${error.message}
+                        </div>
+                    </div>
+                `;
+                document.getElementById('results').style.display = 'block';
+            } finally {
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('testButton').disabled = false;
+            }
+        });
+        
+        function displayResults(data) {
+            const resultsDiv = document.getElementById('results');
+            let html = '';
+            
+            for (const [url, urlData] of Object.entries(data.results_by_url)) {
+                const successRate = ((urlData.successful_bypasses / urlData.total_tests) * 100).toFixed(1);
+                
+                html += `
+                    <div class="main-card url-result">
+                        <div class="url-header">
+                            <div class="url-title">🎯 ${url}</div>
+                        </div>
+                        
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-number">${urlData.total_tests}</div>
+                                <div class="stat-label">Total Tests</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number" style="color: #28a745">${urlData.successful_bypasses}</div>
+                                <div class="stat-label">Successful Bypasses</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number" style="color: #ffc107">${urlData.interesting_responses}</div>
+                                <div class="stat-label">Interesting Responses</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number" style="color: #667eea">${successRate}%</div>
+                                <div class="stat-label">Success Rate</div>
+                            </div>
+                        </div>
+                `;
+                
+                // Successful bypasses
+                const successfulResults = urlData.results.filter(r => r.success);
+                if (successfulResults.length > 0) {
+                    html += `
+                        <div class="results-section">
+                            <h4 class="success-results">✅ Successful Bypasses (${successfulResults.length}):</h4>
+                    `;
+                    successfulResults.forEach(result => {
+                        html += `
+                            <div class="result-item success">
+                                <span class="technique-name">${result.technique}:</span>
+                                <span class="status-code">${result.status_code}</span>
+                                <span class="response-size">(${result.response_size} bytes, ${(result.response_time * 1000).toFixed(0)}ms)</span>
+                            </div>
+                        `;
+                    });
+                    html += '</div>';
+                }
+                
+                // Interesting responses
+                const interestingResults = urlData.results.filter(r => r.interesting);
+                if (interestingResults.length > 0) {
+                    html += `
+                        <div class="results-section">
+                            <h4 class="interesting-results">🔍 Interesting Responses (${interestingResults.length}):</h4>
+                    `;
+                    interestingResults.forEach(result => {
+                        html += `
+                            <div class="result-item interesting">
+                                <span class="technique-name">${result.technique}:</span>
+                                <span class="status-code">${result.status_code}</span>
+                                <span class="response-size">(${result.response_size} bytes, ${(result.response_time * 1000).toFixed(0)}ms)</span>
+                            </div>
+                        `;
+                    });
+                    html += '</div>';
+                }
+                
+                // Failed attempts (show first 5)
+                const failedResults = urlData.results.filter(r => !r.success && !r.interesting).slice(0, 5);
+                if (failedResults.length > 0) {
+                    html += `
+                        <div class="results-section">
+                            <h4 class="failed-results">❌ Failed Attempts (showing first 5):</h4>
+                    `;
+                    failedResults.forEach(result => {
+                        html += `
+                            <div class="result-item failed">
+                                <span class="technique-name">${result.technique}:</span>
+                                <span class="status-code">${result.status_code || 'Error'}</span>
+                                <span class="response-size">(${result.response_size} bytes)</span>
+                            </div>
+                        `;
+                    });
+                    html += '</div>';
+                }
+                
+                html += '</div>';
+            }
+            
+            resultsDiv.innerHTML = html;
+            resultsDiv.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
