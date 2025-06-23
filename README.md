@@ -1,6 +1,6 @@
-# 🚀 Web 403 Bypass Tool - Performance Edition
+# 🚀 Web 403 Bypass Tool - Advanced Edition
 
-Advanced HTTP 403 Forbidden bypass tool with 150+ cutting-edge real-world techniques for security testing and penetration testing, optimized for maximum performance and efficiency.
+Advanced HTTP 403 Forbidden bypass tool with 150+ cutting-edge real-world techniques for security testing and penetration testing, optimized for maximum performance and efficiency, with advanced visualization and integration capabilities.
 
 ![Python](https://img.shields.io/badge/Python-3.7+-blue.svg)
 ![License](https://img.shields.io/badge/License-MIT-green.svg)
@@ -10,9 +10,13 @@ Advanced HTTP 403 Forbidden bypass tool with 150+ cutting-edge real-world techni
 ## 🎯 Features
 
 - **150+ Advanced Bypass Techniques** - Cutting-edge real-world methods including zero-day techniques
+- **Web Interface** - User-friendly web UI for easy scanning and result visualization
+- **Advanced Visualization** - Interactive charts, HTML/PDF reports, and data export
+- **Tool Integration** - Seamless integration with Nmap, Dirsearch, Nuclei, and more
 - **Optimized Performance** - Smart caching, adaptive concurrency, and intelligent request batching
 - **Advanced WAF Evasion** - Specialized bypasses for Cloudflare, AWS WAF, Akamai, ModSecurity
 - **Modern Framework Exploitation** - Next.js, Nuxt, SvelteKit, Remix, Astro specific bypasses
+- **GraphQL & JWT Bypasses** - Specialized techniques for modern API authentication
 - **HTTP/2 & HTTP/3 Support** - Latest protocol-specific bypass methods
 - **Container & Microservices** - Docker, Kubernetes, serverless platform penetration
 - **Adaptive Multi-Threading** - Dynamic concurrency adjustment based on server response
@@ -91,7 +95,7 @@ chmod +x bypass-403.sh
 
 ### Basic Usage
 
-#### Python Version (Advanced Features)
+#### Standard Version
 ```bash
 # Test single path
 python3 bypass403.py https://target.com
@@ -107,6 +111,27 @@ python3 bypass403.py https://target.com -p wordlist.txt -t 50 --adaptive-concurr
 
 # Generate detailed report
 python3 bypass403.py https://target.com -p wordlist.txt -o report.json -v
+```
+
+#### Advanced Version with Visualization & Integration
+```bash
+# Run scan with visualization
+python3 bypass403_advanced.py scan https://target.com --visualize
+
+# Run scan with HTML report
+python3 bypass403_advanced.py scan https://target.com --visualize --report-format html
+
+# Run scan with all report formats (HTML, PDF, CSV)
+python3 bypass403_advanced.py scan https://target.com --visualize --report-format all
+
+# Run scan with tool integrations
+python3 bypass403_advanced.py scan https://target.com --integrations nmap,dirsearch
+
+# Run scan with all available integrations
+python3 bypass403_advanced.py scan https://target.com --integrations all
+
+# Generate visualizations from existing report
+python3 bypass403_advanced.py visualize reports/bypass_report_1234567890.json --format all
 ```
 
 #### Shell Script Version (Fast & Simple)
@@ -141,24 +166,49 @@ python3 bypass403.py https://target.com --max-retries 5
 python3 bypass403.py https://target.com --batch-size 200
 ```
 
-### Output Options
+### Visualization Options
 ```bash
-# Verbose output with detailed progress
-python3 bypass403.py https://target.com -v
+# Generate HTML report from scan
+python3 bypass403_advanced.py scan https://target.com --visualize --report-format html
 
-# Save comprehensive report with performance metrics
-python3 bypass403.py https://target.com -o results.json
+# Generate PDF report from scan
+python3 bypass403_advanced.py scan https://target.com --visualize --report-format pdf
 
-# Custom wordlist
-python3 bypass403.py https://target.com -p custom-paths.txt
+# Generate CSV export of successful bypasses
+python3 bypass403_advanced.py scan https://target.com --visualize --report-format csv
+
+# Visualize existing report
+python3 bypass403_advanced.py visualize reports/bypass_report_1234567890.json --format html
+```
+
+### Integration Options
+```bash
+# Run with Nmap integration
+python3 bypass403_advanced.py scan https://target.com --integrations nmap --nmap-ports "80,443,8080,8443"
+
+# Run with Dirsearch integration
+python3 bypass403_advanced.py scan https://target.com --integrations dirsearch --dirsearch-extensions "php,html,js"
+
+# Run with Nuclei integration
+python3 bypass403_advanced.py scan https://target.com --integrations nuclei --nuclei-templates "http/misconfiguration"
+
+# Run with Wayback Machine integration
+python3 bypass403_advanced.py scan https://target.com --integrations wayback
+
+# Run with all available integrations
+python3 bypass403_advanced.py scan https://target.com --integrations all
 ```
 
 ## 📁 File Structure
 
 ```
-├── bypass403.py          # Main bypass tool (single runner)
+├── bypass403.py          # Main bypass tool (standard version)
+├── bypass403_advanced.py # Advanced version with visualization & integration
+├── visualizer.py         # Visualization module for reports
+├── integrations.py       # Integration with other security tools
+├── bypass-403.sh         # Shell script version (simple)
 ├── wordlist.txt          # Comprehensive path wordlist
-├── README.md             # This file
+├── README.md             # Documentation
 └── requirements.txt      # Python dependencies
 ```
 

@@ -7,3 +7,22 @@ aiodns>=3.0.0  # For faster DNS resolution
 cchardet>=2.1.7  # For faster character encoding detection
 uvloop>=0.17.0  # For faster event loop implementation
 orjson>=3.9.0  # For faster JSON processing
+
+# Web Interface
+fastapi>=0.95.0
+uvicorn>=0.22.0
+jinja2>=3.1.2
+python-multipart>=0.0.6
+
+# Visualization
+matplotlib>=3.7.1
+numpy>=1.24.3
+pandas>=2.0.1
+weasyprint>=59.0  # Optional for PDF generation
+
+# Integration with other tools
+requests>=2.30.0
+
+# Optional dependencies
+# weasyprint requires system dependencies: 
+# Debian/Ubuntu: apt-get install build-essential python3-dev python3-pip python3-setuptools python3-wheel python3-cffi libcairo2 libpango-1.0-0 libpangocairo-1.0-0 libgdk-pixbuf2.0-0 libffi-dev shared-mime-info
