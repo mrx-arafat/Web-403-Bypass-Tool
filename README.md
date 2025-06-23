@@ -1,13 +1,20 @@
 # 🚀 403 Bypass Tool - Professional Edition
 
-A comprehensive web application for testing 403 Forbidden bypass techniques with 50+ advanced methods.
+A comprehensive web application for testing 403 Forbidden bypass techniques with **150+ advanced methods** across 6 major categories.
 
 ## 🌟 Features
 
-- **50+ Bypass Techniques**: Header manipulation, path variations, method changes, encoding tricks
-- **Batch Testing**: Test multiple URLs simultaneously
-- **Professional Web Interface**: Clean, responsive design with real-time results
-- **Multiple Test Modes**: Quick (15), Medium (30), Full (50+ techniques)
+- **150+ Bypass Techniques**: Comprehensive collection across 6 major categories
+- **Advanced Header Manipulation**: 40+ IP spoofing, User-Agent, and authentication headers
+- **HTTP Method Variations**: 25+ methods including WebDAV and custom protocols
+- **Path Manipulation**: 50+ encoding, case variation, and special character techniques
+- **Protocol Testing**: HTTP/1.0, HTTP/1.1, HTTP/2.0 support
+- **Host Header Attacks**: 20+ localhost and internal domain variations
+- **Encoding Techniques**: Base64, Hex, Unicode, ROT13, and HTML entities
+- **Batch Testing**: Test multiple URLs simultaneously with concurrent processing
+- **Professional Web Interface**: Modern glassmorphism design with real-time results
+- **Multiple Test Modes**: Quick (20), Medium (50), Full (150+ techniques)
+- **Show All Responses**: Option to view all attempts including failed ones
 - **Detailed Analytics**: Success rates, response analysis, timing metrics
 - **Production Ready**: Docker support, health checks, CI/CD pipeline
 
@@ -51,47 +58,51 @@ docker run -p 8000:8000 bypass-tool
 ### Example URLs to Test
 
 ```
-https://api.poe.com/
-https://poe.com/admin
-https://example.com/api/v1
-https://target.com/restricted
+https://example.com/admin
+https://target.com/api/v1
+https://site.com/restricted
+https://app.com/dashboard
+https://domain.com/private
 ```
 
-## 🛠️ Bypass Techniques
+## 🛠️ Comprehensive Bypass Techniques (150+)
 
-### Header Manipulation
-- X-Forwarded-For spoofing
-- X-Real-IP injection
-- X-Originating-IP headers
-- User-Agent variations (Googlebot, Bingbot, etc.)
-- Referer manipulation
-- Host header attacks
+### 🎯 Header Manipulation (40+ techniques)
+- **IP Spoofing**: X-Forwarded-For, X-Real-IP, X-Originating-IP, X-Remote-IP
+- **User-Agent Variations**: Googlebot, Bingbot, wget, curl, mobile browsers
+- **Authentication Headers**: X-API-Key, Authorization, X-Auth-Token
+- **Proxy Headers**: X-Forwarded-Host, X-Forwarded-Proto, Via
+- **Custom Headers**: X-Custom-IP-Authorization, X-Rewrite-URL
 
-### Path Variations
-- Trailing slash manipulation
-- Double slash injection
-- URL encoding variations
-- Case sensitivity tests
-- Unicode normalization
-- Dot segment attacks
+### 🔄 HTTP Method Variations (25+ techniques)
+- **Standard Methods**: GET, POST, PUT, PATCH, DELETE, HEAD, OPTIONS
+- **WebDAV Methods**: PROPFIND, PROPPATCH, MKCOL, COPY, MOVE, LOCK, UNLOCK
+- **Version Control**: VERSION-CONTROL, REPORT, CHECKOUT, CHECKIN
+- **Advanced Methods**: TRACE, CONNECT, BASELINE-CONTROL, MKACTIVITY
 
-### HTTP Methods
-- POST instead of GET
-- PUT, PATCH, DELETE
-- OPTIONS, HEAD, TRACE
-- Method override headers
+### 🛤️ Path Manipulation (50+ techniques)
+- **Encoding Variations**: URL encoding, double encoding, Unicode normalization
+- **Case Sensitivity**: Mixed case, uppercase, lowercase variations
+- **Special Characters**: Null bytes, asterisks, pipes, ampersands, percent signs
+- **Path Traversal**: Dot segments, double slashes, trailing slashes
+- **Semicolon Injection**: Parameter pollution, path confusion
 
-### Protocol & Content-Type
-- HTTP/1.0 vs HTTP/2
-- Content-Type spoofing
-- Accept header variations
-- Cache control manipulation
+### 🌐 Protocol Variations (15+ techniques)
+- **HTTP Versions**: HTTP/0.9, HTTP/1.0, HTTP/1.1, HTTP/2.0
+- **Protocol Downgrade**: Force older protocol versions
+- **Connection Types**: Keep-alive, close, upgrade
 
-### Advanced Techniques
-- Authentication bypass attempts
-- Protocol downgrade attacks
-- Unicode and encoding tricks
-- Custom bypass headers
+### 🏠 Host Header Manipulation (20+ techniques)
+- **Localhost Variations**: 127.0.0.1, ::1, localhost, 0.0.0.0
+- **Internal Networks**: 192.168.x.x, 10.x.x.x, 172.16.x.x
+- **Domain Variations**: Empty host, malformed hosts, port variations
+
+### 🔤 Encoding Techniques (20+ techniques)
+- **Base64 Encoding**: Path and parameter encoding
+- **Hex Encoding**: URL hex encoding variations
+- **Unicode**: UTF-8, UTF-16 normalization
+- **ROT13**: Simple character rotation
+- **HTML Entities**: Entity encoding for special characters
 
 ## 📊 API Endpoints
 
@@ -117,9 +128,9 @@ PYTHONUNBUFFERED=1
 
 ### Test Modes
 
-- **Quick (15 techniques)**: Basic headers and methods
-- **Medium (30 techniques)**: Extended headers and path variations
-- **Full (50+ techniques)**: All available bypass methods
+- **Quick (20 techniques)**: Essential headers and basic methods
+- **Medium (50 techniques)**: Extended headers, path variations, and encoding
+- **Full (150+ techniques)**: Complete arsenal of all available bypass methods
 
 ## 🚀 Production Deployment
 
@@ -190,4 +201,11 @@ This tool is for educational and authorized security testing purposes only. User
 
 ---
 
-**Made with ❤️ for the security community**
+**Developed by [mrx-arafat](https://github.com/mrx-arafat) with ❤️ for the security community**
+
+## 👨‍💻 Author
+
+**mrx-arafat** - Security Researcher & Developer
+- GitHub: [@mrx-arafat](https://github.com/mrx-arafat)
+- Website: [arafatops.com](https://arafatops.com)
+- Tool: [bypass403.arafatops.com](https://bypass403.arafatops.com)
