@@ -3,8 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🚀 403 Bypass Tool - Professional Edition</title>
+    <title>🚀 403 Bypass Tool - Professional Security Testing Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --dark-gradient: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --error-color: #ef4444;
+            --info-color: #3b82f6;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --shadow-light: 0 8px 32px rgba(31, 38, 135, 0.37);
+            --shadow-heavy: 0 20px 60px rgba(0, 0, 0, 0.3);
+            --border-radius: 16px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -12,344 +30,697 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--primary-gradient);
             min-height: 100vh;
-            color: #333;
+            color: #1f2937;
+            overflow-x: hidden;
+        }
+
+        /* Animated background particles */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .particle:nth-child(1) { width: 80px; height: 80px; left: 10%; animation-delay: 0s; }
+        .particle:nth-child(2) { width: 60px; height: 60px; left: 20%; animation-delay: 1s; }
+        .particle:nth-child(3) { width: 100px; height: 100px; left: 35%; animation-delay: 2s; }
+        .particle:nth-child(4) { width: 40px; height: 40px; left: 70%; animation-delay: 3s; }
+        .particle:nth-child(5) { width: 120px; height: 120px; left: 85%; animation-delay: 4s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.7; }
+            50% { transform: translateY(-100px) rotate(180deg); opacity: 0.3; }
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 20px;
+            position: relative;
+            z-index: 1;
         }
 
+        /* Modern Header with Glassmorphism */
         .header {
             text-align: center;
-            color: white;
-            margin-bottom: 30px;
-        }
-
-        .header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .header p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
-
-        .main-card {
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            padding: 30px;
-            margin-bottom: 30px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: #555;
-        }
-
-        .url-input-container {
+            margin-bottom: 40px;
             position: relative;
         }
 
-        .url-textarea {
+        .header-content {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--border-radius);
+            padding: 40px 30px;
+            box-shadow: var(--shadow-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--secondary-gradient);
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+            text-shadow: none;
+            letter-spacing: -0.02em;
+        }
+
+        .header .subtitle {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 400;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .header .version-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            padding: 8px 16px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+        }
+
+        /* Glassmorphism Cards */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-light);
+            padding: 30px;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+        }
+
+        /* Modern Form Styling */
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+            font-weight: 600;
+            color: #374151;
+            font-size: 0.95rem;
+        }
+
+        .form-group label i {
+            color: #6366f1;
+            font-size: 1.1rem;
+        }
+
+        .input-container {
+            position: relative;
+        }
+
+        .modern-textarea {
             width: 100%;
-            min-height: 120px;
-            padding: 15px;
-            border: 2px solid #e1e5e9;
-            border-radius: 8px;
+            min-height: 140px;
+            padding: 16px 20px;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
             font-size: 14px;
-            font-family: 'Courier New', monospace;
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
             resize: vertical;
-            transition: border-color 0.3s ease;
+            transition: var(--transition);
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            line-height: 1.6;
         }
 
-        .url-textarea:focus {
+        .modern-textarea:focus {
             outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            border-color: #6366f1;
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+            background: rgba(255, 255, 255, 0.95);
         }
 
-        .url-help {
+        .input-help {
+            display: flex;
+            align-items: center;
+            gap: 6px;
             font-size: 12px;
-            color: #666;
-            margin-top: 5px;
+            color: #6b7280;
+            margin-top: 8px;
+            padding: 8px 12px;
+            background: rgba(99, 102, 241, 0.05);
+            border-radius: 8px;
+            border-left: 3px solid #6366f1;
         }
 
         .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px;
+            gap: 24px;
         }
 
-        .select-input, .number-input {
+        .modern-select, .modern-input {
             width: 100%;
-            padding: 12px;
-            border: 2px solid #e1e5e9;
-            border-radius: 8px;
+            padding: 14px 16px;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
             font-size: 14px;
-            transition: border-color 0.3s ease;
+            font-weight: 500;
+            transition: var(--transition);
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
         }
 
-        .select-input:focus, .number-input:focus {
+        .modern-select:focus, .modern-input:focus {
             outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            border-color: #6366f1;
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+            background: rgba(255, 255, 255, 0.95);
         }
 
-        .test-button {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        .modern-button {
+            background: var(--primary-gradient);
             color: white;
             border: none;
-            padding: 15px 30px;
+            padding: 18px 32px;
             font-size: 16px;
             font-weight: 600;
-            border-radius: 8px;
+            border-radius: 12px;
             cursor: pointer;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            transition: var(--transition);
             width: 100%;
-            margin-top: 10px;
+            margin-top: 16px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
 
-        .test-button:hover {
+        .modern-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .modern-button:hover::before {
+            left: 100%;
+        }
+
+        .modern-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
         }
 
-        .test-button:disabled {
-            background: #ccc;
+        .modern-button:disabled {
+            background: #9ca3af;
             cursor: not-allowed;
             transform: none;
             box-shadow: none;
         }
 
+        .modern-button:disabled::before {
+            display: none;
+        }
+
+        /* Modern Loading Animation */
         .loading {
             display: none;
             text-align: center;
-            padding: 20px;
+            padding: 40px 20px;
         }
 
-        .spinner {
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #667eea;
+        .loading-content {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: var(--shadow-light);
+            color: white;
+        }
+
+        .modern-spinner {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px;
+            position: relative;
+        }
+
+        .modern-spinner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 3px solid rgba(255, 255, 255, 0.2);
             border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 10px;
         }
 
-        @keyframes spin {
+        .modern-spinner::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 3px solid transparent;
+            border-top: 3px solid #ffffff;
+            border-radius: 50%;
+            animation: modernSpin 1s linear infinite;
+        }
+
+        @keyframes modernSpin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
 
+        .loading-text {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Modern Results Section */
         .results {
             display: none;
         }
 
-        .url-result {
-            background: #f8f9fa;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-left: 4px solid #667eea;
+        .result-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-light);
+            padding: 30px;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
         }
 
-        .url-header {
+        .result-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .result-header {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            margin-bottom: 15px;
-        }
-
-        .url-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: #333;
-            word-break: break-all;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
+            gap: 12px;
             margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
         }
 
-        .stat-card {
-            background: white;
-            padding: 15px;
-            border-radius: 8px;
+        .result-url {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1f2937;
+            font-family: 'JetBrains Mono', monospace;
+            word-break: break-all;
+            flex: 1;
+        }
+
+        .modern-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .modern-stat-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: 20px;
+            border-radius: 12px;
             text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+
+        .modern-stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
         .stat-number {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #667eea;
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 4px;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
+        .stat-number.success { color: var(--success-color); }
+        .stat-number.warning { color: var(--warning-color); }
+        .stat-number.info { color: var(--info-color); }
+
         .stat-label {
-            font-size: 0.9rem;
-            color: #666;
-            margin-top: 5px;
+            font-size: 0.85rem;
+            color: #6b7280;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .results-section {
-            margin-top: 20px;
+            margin-top: 24px;
         }
 
-        .results-section h4 {
-            margin-bottom: 10px;
-            color: #333;
-        }
-
-        .success-results {
-            color: #28a745;
-        }
-
-        .interesting-results {
-            color: #ffc107;
-        }
-
-        .failed-results {
-            color: #dc3545;
-        }
-
-        .result-item {
-            background: white;
-            padding: 10px 15px;
-            margin-bottom: 8px;
-            border-radius: 6px;
-            border-left: 3px solid;
-            font-family: 'Courier New', monospace;
-            font-size: 13px;
-        }
-
-        .result-item.success {
-            border-left-color: #28a745;
-            background-color: #f8fff9;
-        }
-
-        .result-item.interesting {
-            border-left-color: #ffc107;
-            background-color: #fffdf5;
-        }
-
-        .result-item.failed {
-            border-left-color: #dc3545;
-            background-color: #fff5f5;
-        }
-
-        .technique-name {
-            font-weight: 600;
-            margin-right: 10px;
-        }
-
-        .status-code {
-            background: #e9ecef;
-            padding: 2px 6px;
-            border-radius: 3px;
-            margin-right: 10px;
-        }
-
-        .response-size {
-            color: #666;
-            font-size: 11px;
-        }
-
-        .footer {
-            text-align: center;
-            color: white;
-            margin-top: 30px;
-            opacity: 0.8;
-        }
-
-        .technique-info {
-            background: #e3f2fd;
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 20px;
-        }
-
-        .technique-info h4 {
-            color: #1976d2;
-            margin-bottom: 10px;
-        }
-
-        .technique-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        .section-header {
+            display: flex;
+            align-items: center;
             gap: 10px;
+            margin-bottom: 16px;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .section-header i {
+            font-size: 1.2rem;
+        }
+
+        .section-header.success { color: var(--success-color); }
+        .section-header.warning { color: var(--warning-color); }
+        .section-header.error { color: var(--error-color); }
+
+        .modern-result-item {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 10px;
+            border-left: 4px solid;
+            font-family: 'JetBrains Mono', monospace;
             font-size: 13px;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .modern-result-item:hover {
+            transform: translateX(4px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .modern-result-item.success {
+            border-left-color: var(--success-color);
+            background: rgba(16, 185, 129, 0.05);
+        }
+
+        .modern-result-item.warning {
+            border-left-color: var(--warning-color);
+            background: rgba(245, 158, 11, 0.05);
+        }
+
+        .modern-result-item.error {
+            border-left-color: var(--error-color);
+            background: rgba(239, 68, 68, 0.05);
+        }
+
+        .technique-info-modern {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: var(--border-radius);
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+
+        .technique-info-modern h4 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #6366f1;
+            margin-bottom: 16px;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .modern-technique-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 12px;
+        }
+
+        .technique-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 500;
+            color: #374151;
+        }
+
+        .technique-item i {
+            color: #6366f1;
+            font-size: 0.9rem;
+        }
+
+        /* Modern Footer with Credits */
+        .modern-footer {
+            margin-top: 60px;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow-light);
+        }
+
+        .footer-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 16px;
+        }
+
+        .footer-credits {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .credit-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .credit-item i {
+            color: #f59e0b;
+            font-size: 1.1rem;
+        }
+
+        .github-link {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .github-link:hover {
+            color: white;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .footer-link:hover {
+            color: white;
         }
 
         .error-message {
-            background: #f8d7da;
-            color: #721c24;
-            padding: 15px;
-            border-radius: 8px;
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #dc2626;
+            padding: 20px;
+            border-radius: var(--border-radius);
             margin-bottom: 20px;
-            border-left: 4px solid #dc3545;
+            backdrop-filter: blur(10px);
         }
 
+        /* Responsive Design */
         @media (max-width: 768px) {
             .form-row {
                 grid-template-columns: 1fr;
             }
             
-            .stats-grid {
+            .modern-stats-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
             
             .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .footer-credits {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .modern-technique-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
                 font-size: 2rem;
+            }
+
+            .modern-stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .glass-card {
+                padding: 20px;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
     <div class="container">
+        <!-- Modern Header -->
         <div class="header">
-            <h1>🚀 403 Bypass Tool</h1>
-            <p>Professional Edition - Comprehensive 403 Forbidden Bypass Testing</p>
+            <div class="header-content">
+                <h1>🚀 403 Bypass Tool</h1>
+                <p class="subtitle">Professional Security Testing Platform</p>
+                <div class="version-badge">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>v2.0 Professional Edition</span>
+                </div>
+            </div>
         </div>
 
-        <div class="main-card">
+        <!-- Main Form Card -->
+        <div class="glass-card">
             <form id="bypassForm">
                 <div class="form-group">
-                    <label for="urls">🎯 Target URLs:</label>
-                    <div class="url-input-container">
+                    <label for="urls">
+                        <i class="fas fa-bullseye"></i>
+                        Target URLs
+                    </label>
+                    <div class="input-container">
                         <textarea 
                             id="urls" 
-                            class="url-textarea" 
+                            class="modern-textarea" 
                             placeholder="Enter URLs to test (one per line):&#10;&#10;https://api.poe.com/&#10;https://poe.com/admin&#10;https://example.com/api/v1&#10;https://target.com/restricted"
                             required
                         ></textarea>
-                        <div class="url-help">
-                            💡 Enter one URL per line. HTTP/HTTPS will be added automatically if missing.
+                        <div class="input-help">
+                            <i class="fas fa-info-circle"></i>
+                            Enter one URL per line. HTTP/HTTPS will be added automatically if missing.
                         </div>
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="testMode">🔧 Test Mode:</label>
-                        <select id="testMode" class="select-input">
+                        <label for="testMode">
+                            <i class="fas fa-cogs"></i>
+                            Test Mode
+                        </label>
+                        <select id="testMode" class="modern-select">
                             <option value="quick">⚡ Quick (15 techniques)</option>
                             <option value="medium" selected>🎯 Medium (30 techniques)</option>
                             <option value="full">🚀 Full (50+ techniques)</option>
@@ -357,42 +728,120 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="timeout">⏱️ Timeout (seconds):</label>
-                        <input type="number" id="timeout" class="number-input" value="10" min="5" max="60">
+                        <label for="timeout">
+                            <i class="fas fa-clock"></i>
+                            Timeout (seconds)
+                        </label>
+                        <input type="number" id="timeout" class="modern-input" value="10" min="5" max="60">
                     </div>
                 </div>
 
-                <button type="submit" class="test-button" id="testButton">
-                    🚀 Start Comprehensive Testing
+                <button type="submit" class="modern-button" id="testButton">
+                    <i class="fas fa-rocket"></i>
+                    Start Comprehensive Testing
                 </button>
             </form>
 
-            <div class="technique-info">
-                <h4>🛠️ Available Bypass Techniques:</h4>
-                <div class="technique-list">
-                    <div>• Header Manipulation (X-Forwarded-For, X-Real-IP, etc.)</div>
-                    <div>• User-Agent Spoofing (Googlebot, Bingbot, etc.)</div>
-                    <div>• HTTP Method Variations (POST, PUT, PATCH, etc.)</div>
-                    <div>• Path Manipulations (Trailing slash, encoding, etc.)</div>
-                    <div>• Protocol Variations (HTTP/1.0, HTTP/2)</div>
-                    <div>• Content-Type Spoofing</div>
-                    <div>• Authentication Bypass Attempts</div>
-                    <div>• Cache Control Manipulation</div>
-                    <div>• Unicode & Encoding Variations</div>
-                    <div>• Host Header Manipulation</div>
+            <!-- Technique Information -->
+            <div class="technique-info-modern">
+                <h4>
+                    <i class="fas fa-tools"></i>
+                    Available Bypass Techniques
+                </h4>
+                <div class="modern-technique-grid">
+                    <div class="technique-item">
+                        <i class="fas fa-header"></i>
+                        Header Manipulation (X-Forwarded-For, X-Real-IP, etc.)
+                    </div>
+                    <div class="technique-item">
+                        <i class="fas fa-user-secret"></i>
+                        User-Agent Spoofing (Googlebot, Bingbot, etc.)
+                    </div>
+                    <div class="technique-item">
+                        <i class="fas fa-exchange-alt"></i>
+                        HTTP Method Variations (POST, PUT, PATCH, etc.)
+                    </div>
+                    <div class="technique-item">
+                        <i class="fas fa-route"></i>
+                        Path Manipulations (Trailing slash, encoding, etc.)
+                    </div>
+                    <div class="technique-item">
+                        <i class="fas fa-network-wired"></i>
+                        Protocol Variations (HTTP/1.0, HTTP/2)
+                    </div>
+                    <div class="technique-item">
+                        <i class="fas fa-file-code"></i>
+                        Content-Type Spoofing
+                    </div>
+                    <div class="technique-item">
+                        <i class="fas fa-key"></i>
+                        Authentication Bypass Attempts
+                    </div>
+                    <div class="technique-item">
+                        <i class="fas fa-memory"></i>
+                        Cache Control Manipulation
+                    </div>
+                    <div class="technique-item">
+                        <i class="fas fa-language"></i>
+                        Unicode & Encoding Variations
+                    </div>
+                    <div class="technique-item">
+                        <i class="fas fa-server"></i>
+                        Host Header Manipulation
+                    </div>
                 </div>
             </div>
         </div>
 
+        <!-- Loading Animation -->
         <div class="loading" id="loading">
-            <div class="spinner"></div>
-            <p>🔍 Testing bypass techniques... This may take a few moments.</p>
+            <div class="loading-content">
+                <div class="modern-spinner"></div>
+                <p class="loading-text">
+                    <i class="fas fa-search"></i>
+                    Testing bypass techniques... This may take a few moments.
+                </p>
+            </div>
         </div>
 
+        <!-- Results Section -->
         <div class="results" id="results"></div>
 
-        <div class="footer">
-            <p>🔒 403 Bypass Tool - Professional Security Testing | bypass403.arafatops.com</p>
+        <!-- Modern Footer with Credits -->
+        <div class="modern-footer">
+            <div class="footer-content">
+                <div class="footer-title">
+                    <i class="fas fa-shield-alt"></i>
+                    403 Bypass Tool - Professional Security Testing
+                </div>
+                
+                <div class="footer-credits">
+                    <div class="credit-item">
+                        <i class="fas fa-code"></i>
+                        <span>Developed by</span>
+                        <a href="https://github.com/mrx-arafat" target="_blank" class="github-link">
+                            <i class="fab fa-github"></i>
+                            mrx-arafat
+                        </a>
+                    </div>
+                    <div class="credit-item">
+                        <i class="fas fa-globe"></i>
+                        <span>bypass403.arafatops.com</span>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <a href="https://github.com/mrx-arafat/Web-403-Bypass-Tool" target="_blank" class="footer-link">
+                        <i class="fab fa-github"></i> Source Code
+                    </a>
+                    <a href="https://github.com/mrx-arafat/Web-403-Bypass-Tool/issues" target="_blank" class="footer-link">
+                        <i class="fas fa-bug"></i> Report Issues
+                    </a>
+                    <a href="https://github.com/mrx-arafat/Web-403-Bypass-Tool/blob/main/README.md" target="_blank" class="footer-link">
+                        <i class="fas fa-book"></i> Documentation
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -405,7 +854,7 @@
             const timeout = parseInt(document.getElementById('timeout').value);
             
             if (urls.length === 0) {
-                alert('Please enter at least one URL to test.');
+                showNotification('Please enter at least one URL to test.', 'error');
                 return;
             }
             
@@ -438,9 +887,10 @@
             } catch (error) {
                 console.error('Error:', error);
                 document.getElementById('results').innerHTML = `
-                    <div class="main-card">
+                    <div class="glass-card">
                         <div class="error-message">
-                            <strong>❌ Error:</strong> ${error.message}
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <strong>Error:</strong> ${error.message}
                         </div>
                     </div>
                 `;
@@ -459,26 +909,27 @@
                 const successRate = ((urlData.successful_bypasses / urlData.total_tests) * 100).toFixed(1);
                 
                 html += `
-                    <div class="main-card url-result">
-                        <div class="url-header">
-                            <div class="url-title">🎯 ${url}</div>
+                    <div class="result-card">
+                        <div class="result-header">
+                            <i class="fas fa-bullseye" style="color: #6366f1;"></i>
+                            <div class="result-url">${url}</div>
                         </div>
                         
-                        <div class="stats-grid">
-                            <div class="stat-card">
+                        <div class="modern-stats-grid">
+                            <div class="modern-stat-card">
                                 <div class="stat-number">${urlData.total_tests}</div>
                                 <div class="stat-label">Total Tests</div>
                             </div>
-                            <div class="stat-card">
-                                <div class="stat-number" style="color: #28a745">${urlData.successful_bypasses}</div>
+                            <div class="modern-stat-card">
+                                <div class="stat-number success">${urlData.successful_bypasses}</div>
                                 <div class="stat-label">Successful Bypasses</div>
                             </div>
-                            <div class="stat-card">
-                                <div class="stat-number" style="color: #ffc107">${urlData.interesting_responses}</div>
+                            <div class="modern-stat-card">
+                                <div class="stat-number warning">${urlData.interesting_responses}</div>
                                 <div class="stat-label">Interesting Responses</div>
                             </div>
-                            <div class="stat-card">
-                                <div class="stat-number" style="color: #667eea">${successRate}%</div>
+                            <div class="modern-stat-card">
+                                <div class="stat-number info">${successRate}%</div>
                                 <div class="stat-label">Success Rate</div>
                             </div>
                         </div>
@@ -489,14 +940,21 @@
                 if (successfulResults.length > 0) {
                     html += `
                         <div class="results-section">
-                            <h4 class="success-results">✅ Successful Bypasses (${successfulResults.length}):</h4>
+                            <div class="section-header success">
+                                <i class="fas fa-check-circle"></i>
+                                Successful Bypasses (${successfulResults.length})
+                            </div>
                     `;
                     successfulResults.forEach(result => {
                         html += `
-                            <div class="result-item success">
-                                <span class="technique-name">${result.technique}:</span>
-                                <span class="status-code">${result.status_code}</span>
-                                <span class="response-size">(${result.response_size} bytes, ${(result.response_time * 1000).toFixed(0)}ms)</span>
+                            <div class="modern-result-item success">
+                                <div>
+                                    <strong>${result.technique}:</strong>
+                                    <span style="margin-left: 10px; background: var(--success-color); color: white; padding: 2px 8px; border-radius: 4px; font-size: 12px;">${result.status_code}</span>
+                                </div>
+                                <div style="font-size: 11px; color: #6b7280;">
+                                    ${result.response_size} bytes, ${(result.response_time * 1000).toFixed(0)}ms
+                                </div>
                             </div>
                         `;
                     });
@@ -508,14 +966,21 @@
                 if (interestingResults.length > 0) {
                     html += `
                         <div class="results-section">
-                            <h4 class="interesting-results">🔍 Interesting Responses (${interestingResults.length}):</h4>
+                            <div class="section-header warning">
+                                <i class="fas fa-search"></i>
+                                Interesting Responses (${interestingResults.length})
+                            </div>
                     `;
                     interestingResults.forEach(result => {
                         html += `
-                            <div class="result-item interesting">
-                                <span class="technique-name">${result.technique}:</span>
-                                <span class="status-code">${result.status_code}</span>
-                                <span class="response-size">(${result.response_size} bytes, ${(result.response_time * 1000).toFixed(0)}ms)</span>
+                            <div class="modern-result-item warning">
+                                <div>
+                                    <strong>${result.technique}:</strong>
+                                    <span style="margin-left: 10px; background: var(--warning-color); color: white; padding: 2px 8px; border-radius: 4px; font-size: 12px;">${result.status_code}</span>
+                                </div>
+                                <div style="font-size: 11px; color: #6b7280;">
+                                    ${result.response_size} bytes, ${(result.response_time * 1000).toFixed(0)}ms
+                                </div>
                             </div>
                         `;
                     });
@@ -527,14 +992,21 @@
                 if (failedResults.length > 0) {
                     html += `
                         <div class="results-section">
-                            <h4 class="failed-results">❌ Failed Attempts (showing first 5):</h4>
+                            <div class="section-header error">
+                                <i class="fas fa-times-circle"></i>
+                                Failed Attempts (showing first 5)
+                            </div>
                     `;
                     failedResults.forEach(result => {
                         html += `
-                            <div class="result-item failed">
-                                <span class="technique-name">${result.technique}:</span>
-                                <span class="status-code">${result.status_code || 'Error'}</span>
-                                <span class="response-size">(${result.response_size} bytes)</span>
+                            <div class="modern-result-item error">
+                                <div>
+                                    <strong>${result.technique}:</strong>
+                                    <span style="margin-left: 10px; background: var(--error-color); color: white; padding: 2px 8px; border-radius: 4px; font-size: 12px;">${result.status_code || 'Error'}</span>
+                                </div>
+                                <div style="font-size: 11px; color: #6b7280;">
+                                    ${result.response_size} bytes
+                                </div>
                             </div>
                         `;
                     });
@@ -546,7 +1018,51 @@
             
             resultsDiv.innerHTML = html;
             resultsDiv.style.display = 'block';
+            
+            // Smooth scroll to results
+            resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
+
+        function showNotification(message, type = 'info') {
+            // Simple notification system
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: ${type === 'error' ? 'var(--error-color)' : 'var(--info-color)'};
+                color: white;
+                padding: 16px 24px;
+                border-radius: 8px;
+                box-shadow: var(--shadow-light);
+                z-index: 1000;
+                font-weight: 500;
+                backdrop-filter: blur(10px);
+            `;
+            notification.innerHTML = `<i class="fas fa-${type === 'error' ? 'exclamation-triangle' : 'info-circle'}"></i> ${message}`;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.opacity = '0';
+                notification.style.transform = 'translateX(100%)';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+
+        // Add some interactive effects
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add hover effects to cards
+            const cards = document.querySelectorAll('.glass-card, .result-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                });
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
     </script>
 </body>
 </html>
