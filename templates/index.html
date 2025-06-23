@@ -293,6 +293,58 @@
             background: #9ca3af;
             cursor: not-allowed;
             transform: none;
+        }
+
+        /* Modern Checkbox Styles */
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            padding: 12px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-color);
+            font-size: 14px;
+        }
+
+        .checkbox-label:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(102, 126, 234, 0.3);
+        }
+
+        .modern-checkbox {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 6px;
+            background: transparent;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .modern-checkbox:checked {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-color: #667eea;
+        }
+
+        .modern-checkbox:checked::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .checkmark {
+            display: none;
             box-shadow: none;
         }
 
@@ -704,7 +756,7 @@
                         <textarea 
                             id="urls" 
                             class="modern-textarea" 
-                            placeholder="Enter URLs to test (one per line):&#10;&#10;https://api.poe.com/&#10;https://poe.com/admin&#10;https://example.com/api/v1&#10;https://target.com/restricted"
+                            placeholder="Enter URLs to test (one per line):&#10;&#10;https://example.com/admin&#10;https://target.com/api/v1&#10;https://site.com/restricted&#10;https://app.com/dashboard"
                             required
                         ></textarea>
                         <div class="input-help">
@@ -721,9 +773,9 @@
                             Test Mode
                         </label>
                         <select id="testMode" class="modern-select">
-                            <option value="quick">⚡ Quick (15 techniques)</option>
-                            <option value="medium" selected>🎯 Medium (30 techniques)</option>
-                            <option value="full">🚀 Full (50+ techniques)</option>
+                            <option value="quick">⚡ Quick (20 techniques)</option>
+                            <option value="medium" selected>🎯 Medium (50 techniques)</option>
+                            <option value="full">🚀 Full (150+ techniques)</option>
                         </select>
                     </div>
 
@@ -734,6 +786,15 @@
                         </label>
                         <input type="number" id="timeout" class="modern-input" value="10" min="5" max="60">
                     </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="showAllResponses" class="modern-checkbox">
+                        <span class="checkmark"></span>
+                        <i class="fas fa-list-ul"></i>
+                        Show All Responses (including failed attempts)
+                    </label>
                 </div>
 
                 <button type="submit" class="modern-button" id="testButton">
@@ -873,7 +934,8 @@
                         urls: urls,
                         test_mode: testMode,
                         timeout: timeout,
-                        max_concurrent: 5
+                        max_concurrent: 5,
+                        show_all_responses: document.getElementById('showAllResponses').checked
                     })
                 });
                 

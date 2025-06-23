@@ -18,6 +18,7 @@ from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel, HttpUrl
 import uvicorn
 import logging
+from bypass_techniques import BypassTechniques
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -39,6 +40,7 @@ class BypassRequest(BaseModel):
     custom_techniques: Optional[List[str]] = None
     timeout: int = 10
     max_concurrent: int = 5
+    show_all_responses: bool = False  # Show all responses including failed ones
 
 class BypassResult(BaseModel):
     url: str
@@ -73,114 +75,8 @@ class ComprehensiveBypassTester:
             await self.session.close()
 
     def get_bypass_techniques(self, mode: str = "medium") -> List[Dict[str, Any]]:
-        """Get bypass techniques based on mode"""
-        
-        # Core techniques for all modes
-        techniques = [
-            # Basic requests
-            {"name": "Basic Request", "type": "baseline"},
-            {"name": "Trailing Slash", "type": "path", "url_modifier": lambda url: url.rstrip('/') + '/'},
-            {"name": "Remove Trailing Slash", "type": "path", "url_modifier": lambda url: url.rstrip('/')},
-            
-            # Header manipulation
-            {"name": "X-Forwarded-For", "type": "header", "headers": {"X-Forwarded-For": "127.0.0.1"}},
-            {"name": "X-Real-IP", "type": "header", "headers": {"X-Real-IP": "127.0.0.1"}},
-            {"name": "X-Originating-IP", "type": "header", "headers": {"X-Originating-IP": "127.0.0.1"}},
-            {"name": "X-Remote-IP", "type": "header", "headers": {"X-Remote-IP": "127.0.0.1"}},
-            {"name": "X-Client-IP", "type": "header", "headers": {"X-Client-IP": "127.0.0.1"}},
-            
-            # User agents
-            {"name": "User-Agent: Googlebot", "type": "header", "headers": {"User-Agent": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"}},
-            {"name": "User-Agent: Bingbot", "type": "header", "headers": {"User-Agent": "Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)"}},
-            
-            # Methods
-            {"name": "Method: POST", "type": "method", "method": "POST"},
-            {"name": "Method: PUT", "type": "method", "method": "PUT"},
-            {"name": "Method: PATCH", "type": "method", "method": "PATCH"},
-        ]
-        
-        if mode in ["medium", "full"]:
-            techniques.extend([
-                # More headers
-                {"name": "X-Forwarded-Host", "type": "header", "headers": {"X-Forwarded-Host": "localhost"}},
-                {"name": "X-Forwarded-Proto", "type": "header", "headers": {"X-Forwarded-Proto": "https"}},
-                {"name": "X-Forwarded-Server", "type": "header", "headers": {"X-Forwarded-Server": "localhost"}},
-                {"name": "X-HTTP-Method-Override", "type": "header", "headers": {"X-HTTP-Method-Override": "GET"}},
-                {"name": "X-Original-URL", "type": "header", "headers": {"X-Original-URL": "/"}},
-                {"name": "X-Rewrite-URL", "type": "header", "headers": {"X-Rewrite-URL": "/"}},
-                
-                # Referer manipulation
-                {"name": "Referer: google.com", "type": "header", "headers": {"Referer": "https://www.google.com/"}},
-                {"name": "Referer: localhost", "type": "header", "headers": {"Referer": "http://localhost/"}},
-                
-                # Accept headers
-                {"name": "Accept: text/html", "type": "header", "headers": {"Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"}},
-                {"name": "Accept: application/json", "type": "header", "headers": {"Accept": "application/json"}},
-                
-                # Path manipulations
-                {"name": "Double Slash", "type": "path", "url_modifier": lambda url: url.replace("://", ":////", 1)},
-                {"name": "URL Encoding", "type": "path", "url_modifier": lambda url: url.replace("/", "%2F") if url.count("/") > 2 else url},
-                {"name": "Case Variation", "type": "path", "url_modifier": lambda url: self._case_variation(url)},
-                
-                # More methods
-                {"name": "Method: HEAD", "type": "method", "method": "HEAD"},
-                {"name": "Method: OPTIONS", "type": "method", "method": "OPTIONS"},
-                {"name": "Method: TRACE", "type": "method", "method": "TRACE"},
-            ])
-        
-        if mode == "full":
-            techniques.extend([
-                # Advanced headers
-                {"name": "X-Cluster-Client-IP", "type": "header", "headers": {"X-Cluster-Client-IP": "127.0.0.1"}},
-                {"name": "X-ProxyUser-Ip", "type": "header", "headers": {"X-ProxyUser-Ip": "127.0.0.1"}},
-                {"name": "CF-Connecting-IP", "type": "header", "headers": {"CF-Connecting-IP": "127.0.0.1"}},
-                {"name": "True-Client-IP", "type": "header", "headers": {"True-Client-IP": "127.0.0.1"}},
-                {"name": "X-Forwarded-For: Multiple", "type": "header", "headers": {"X-Forwarded-For": "127.0.0.1, 192.168.1.1, 10.0.0.1"}},
-                
-                # Protocol manipulation
-                {"name": "HTTP/1.0", "type": "protocol", "headers": {"Connection": "close"}},
-                {"name": "HTTP/2", "type": "protocol", "headers": {"Upgrade": "h2c"}},
-                
-                # Content-Type variations
-                {"name": "Content-Type: JSON", "type": "header", "headers": {"Content-Type": "application/json"}},
-                {"name": "Content-Type: XML", "type": "header", "headers": {"Content-Type": "application/xml"}},
-                {"name": "Content-Type: Form", "type": "header", "headers": {"Content-Type": "application/x-www-form-urlencoded"}},
-                
-                # Advanced path manipulations
-                {"name": "Dot Segment", "type": "path", "url_modifier": lambda url: url + "/."},
-                {"name": "Double Dot", "type": "path", "url_modifier": lambda url: url + "/.."},
-                {"name": "Semicolon", "type": "path", "url_modifier": lambda url: url + ";"},
-                {"name": "Question Mark", "type": "path", "url_modifier": lambda url: url + "?"},
-                {"name": "Hash", "type": "path", "url_modifier": lambda url: url + "#"},
-                
-                # Unicode and encoding
-                {"name": "Unicode Normalization", "type": "path", "url_modifier": lambda url: self._unicode_normalize(url)},
-                {"name": "Double URL Encoding", "type": "path", "url_modifier": lambda url: self._double_encode(url)},
-                
-                # Cache busting
-                {"name": "Cache-Control: no-cache", "type": "header", "headers": {"Cache-Control": "no-cache"}},
-                {"name": "Pragma: no-cache", "type": "header", "headers": {"Pragma": "no-cache"}},
-                
-                # Authentication bypass attempts
-                {"name": "Authorization: Basic", "type": "header", "headers": {"Authorization": "Basic YWRtaW46YWRtaW4="}},
-                {"name": "X-Custom-IP-Authorization", "type": "header", "headers": {"X-Custom-IP-Authorization": "127.0.0.1"}},
-                
-                # Host header manipulation
-                {"name": "Host: localhost", "type": "header", "headers": {"Host": "localhost"}},
-                {"name": "Host: 127.0.0.1", "type": "header", "headers": {"Host": "127.0.0.1"}},
-                
-                # Additional user agents
-                {"name": "User-Agent: curl", "type": "header", "headers": {"User-Agent": "curl/7.68.0"}},
-                {"name": "User-Agent: wget", "type": "header", "headers": {"User-Agent": "Wget/1.20.3"}},
-                {"name": "User-Agent: Python", "type": "header", "headers": {"User-Agent": "Python-urllib/3.8"}},
-                
-                # Custom headers that might bypass
-                {"name": "X-Bypass", "type": "header", "headers": {"X-Bypass": "true"}},
-                {"name": "X-Admin", "type": "header", "headers": {"X-Admin": "true"}},
-                {"name": "X-Debug", "type": "header", "headers": {"X-Debug": "1"}},
-            ])
-        
-        return techniques
+        """Get comprehensive bypass techniques from external module"""
+        return BypassTechniques.get_techniques_by_mode(mode)
     
     def _case_variation(self, url: str) -> str:
         """Apply case variation to URL path"""
@@ -213,15 +109,31 @@ class ComprehensiveBypassTester:
             headers = {}
             method = "GET"
             
-            # Apply technique modifications
+            # Apply technique modifications based on new format
             if technique.get("headers"):
                 headers.update(technique["headers"])
             
             if technique.get("method"):
                 method = technique["method"]
             
-            if technique.get("url_modifier"):
+            # Handle path modifications
+            if technique.get("path_modifier"):
+                parsed = urlparse(url)
+                modified_path = technique["path_modifier"](parsed.path or "/")
+                test_url = f"{parsed.scheme}://{parsed.netloc}{modified_path}"
+                if parsed.query:
+                    test_url += f"?{parsed.query}"
+                if parsed.fragment:
+                    test_url += f"#{parsed.fragment}"
+            
+            # Handle legacy url_modifier for backward compatibility
+            elif technique.get("url_modifier"):
                 test_url = technique["url_modifier"](url)
+            
+            # Handle protocol version
+            if technique.get("version"):
+                # For HTTP version, we'll add it as a header hint
+                headers["Connection"] = "close" if technique["version"] == "1.0" else "keep-alive"
             
             # Make request
             async with self.session.request(method, test_url, headers=headers) as response:
@@ -347,11 +259,19 @@ async def test_bypass(request: BypassRequest):
                     "total_tests": 0,
                     "successful_bypasses": 0,
                     "interesting_responses": 0,
-                    "results": []
+                    "results": [],
+                    "all_results": []  # Store all results for show_all_responses option
                 }
             
             results_by_url[base_url]["total_tests"] += 1
-            results_by_url[base_url]["results"].append(result.dict())
+            result_dict = result.dict()
+            
+            # Always store in all_results
+            results_by_url[base_url]["all_results"].append(result_dict)
+            
+            # Store in filtered results based on show_all_responses setting
+            if request.show_all_responses or result.success or result.interesting:
+                results_by_url[base_url]["results"].append(result_dict)
             
             if result.success:
                 results_by_url[base_url]["successful_bypasses"] += 1
