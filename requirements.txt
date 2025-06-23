@@ -1,5 +1,9 @@
-# 403 Bypass Tool - Ultimate Edition
-# Core dependencies for the bypass tool
+# 403 Bypass Tool - Performance Edition
+# Core dependencies for the optimized bypass tool
 
 # Core HTTP and Async Libraries
 aiohttp>=3.9.0
+aiodns>=3.0.0  # For faster DNS resolution
+cchardet>=2.1.7  # For faster character encoding detection
+uvloop>=0.17.0  # For faster event loop implementation
+orjson>=3.9.0  # For faster JSON processing

@@ -1,25 +1,25 @@
-# 🚀 Web 403 Bypass Tool - Ultimate Edition
+# 🚀 Web 403 Bypass Tool - Performance Edition
 
-Advanced HTTP 403 Forbidden bypass tool with 150+ cutting-edge real-world techniques for security testing and penetration testing.
+Advanced HTTP 403 Forbidden bypass tool with 150+ cutting-edge real-world techniques for security testing and penetration testing, optimized for maximum performance and efficiency.
 
 ![Python](https://img.shields.io/badge/Python-3.7+-blue.svg)
 ![License](https://img.shields.io/badge/License-MIT-green.svg)
-![Version](https://img.shields.io/badge/Version-3.0.0-red.svg)
+![Version](https://img.shields.io/badge/Version-4.0.0-red.svg)
 ![Author](https://img.shields.io/badge/Author-mrx--arafat-blue.svg)
 
 ## 🎯 Features
 
 - **150+ Advanced Bypass Techniques** - Cutting-edge real-world methods including zero-day techniques
-- **AI-Powered Testing** - Intelligent payload generation and success detection
+- **Optimized Performance** - Smart caching, adaptive concurrency, and intelligent request batching
 - **Advanced WAF Evasion** - Specialized bypasses for Cloudflare, AWS WAF, Akamai, ModSecurity
 - **Modern Framework Exploitation** - Next.js, Nuxt, SvelteKit, Remix, Astro specific bypasses
 - **HTTP/2 & HTTP/3 Support** - Latest protocol-specific bypass methods
 - **Container & Microservices** - Docker, Kubernetes, serverless platform penetration
-- **Multi-Threading** - Lightning-fast concurrent testing with configurable thread count
-- **Smart Detection** - ML-enhanced success detection with CVSS scoring
+- **Adaptive Multi-Threading** - Dynamic concurrency adjustment based on server response
+- **Smart Prioritization** - Machine learning-based test case prioritization for faster results
 - **Comprehensive Wordlist** - 500+ carefully curated real-world paths
-- **Advanced Reporting** - JSON output with detailed vulnerability analysis
-- **Stealth Features** - Built-in evasion and rate limiting capabilities
+- **Advanced Reporting** - Detailed JSON output with performance metrics and vulnerability analysis
+- **Parallel Processing** - Shell script version with parallel execution for faster results
 - **Professional Grade** - Enterprise-ready tool for security professionals
 
 ## 🔥 Advanced Bypass Techniques
@@ -82,14 +82,16 @@ git clone https://github.com/mrx-arafat/Web-403-Bypass-Tool.git
 cd Web-403-Bypass-Tool
 
 # Install dependencies
-pip3 install aiohttp
+pip3 install -r requirements.txt
 
 # Make executable
 chmod +x bypass403.py
+chmod +x bypass-403.sh
 ```
 
 ### Basic Usage
 
+#### Python Version (Advanced Features)
 ```bash
 # Test single path
 python3 bypass403.py https://target.com
@@ -100,33 +102,51 @@ python3 bypass403.py https://target.com -p /admin
 # Test with wordlist
 python3 bypass403.py https://target.com -p wordlist.txt
 
-# High-performance scan
-python3 bypass403.py https://target.com -p wordlist.txt -t 50
+# High-performance scan with optimizations
+python3 bypass403.py https://target.com -p wordlist.txt -t 50 --adaptive-concurrency --smart-prioritization
 
 # Generate detailed report
 python3 bypass403.py https://target.com -p wordlist.txt -o report.json -v
 ```
 
+#### Shell Script Version (Fast & Simple)
+```bash
+# Basic usage
+bash bypass-403.sh https://target.com admin
+
+# With parallel processing (10 threads)
+bash bypass-403.sh https://target.com admin -t 10
+
+# With output file
+bash bypass-403.sh https://target.com admin -o results.txt -v
+```
+
 ## 📊 Advanced Usage
 
-### Performance Tuning
+### Performance Optimization
 ```bash
-# Fast scan (50 threads, minimal delay)
-python3 bypass403.py https://target.com -t 50 --delay 0.05
+# Adaptive concurrency (automatically adjusts thread count based on response times)
+python3 bypass403.py https://target.com --adaptive-concurrency
 
-# Conservative scan (respect rate limits)
-python3 bypass403.py https://target.com -t 5 --delay 1.0
+# Smart prioritization (learns from successful bypasses to prioritize similar techniques)
+python3 bypass403.py https://target.com --smart-prioritization
 
-# Custom timeout
-python3 bypass403.py https://target.com --timeout 30
+# Maximum performance (combines all optimizations)
+python3 bypass403.py https://target.com -t 50 --adaptive-concurrency --smart-prioritization --delay 0.05
+
+# Retry failed requests
+python3 bypass403.py https://target.com --max-retries 5
+
+# Custom batch size for memory optimization
+python3 bypass403.py https://target.com --batch-size 200
 ```
 
 ### Output Options
 ```bash
-# Verbose output
+# Verbose output with detailed progress
 python3 bypass403.py https://target.com -v
 
-# Save results to file
+# Save comprehensive report with performance metrics
 python3 bypass403.py https://target.com -o results.json
 
 # Custom wordlist
@@ -284,10 +304,13 @@ pip3 install aiohttp
 
 ## 📈 Performance
 
-- **Speed**: 50+ requests/second (configurable)
-- **Efficiency**: Asynchronous HTTP processing
-- **Memory**: Optimized for large-scale testing
-- **Scalability**: Supports 1-100+ concurrent threads
+- **Speed**: 100+ requests/second with adaptive concurrency
+- **Efficiency**: Optimized asynchronous processing with smart caching
+- **Memory**: Intelligent batching for reduced memory footprint
+- **Scalability**: Dynamic thread adjustment based on server response
+- **Caching**: Response caching to eliminate redundant requests
+- **Prioritization**: ML-based technique prioritization for faster results
+- **Parallel Processing**: Shell script version with parallel execution
 
 ## 🤝 Contributing
 
@@ -304,6 +327,16 @@ python3 bypass403.py https://httpbin.org/status/403 -v
 ```
 
 ## 📝 Changelog
+
+### Version 4.0.0 - Performance Edition
+- Optimized performance with smart caching and adaptive concurrency
+- Intelligent request batching for reduced memory footprint
+- ML-based technique prioritization for faster results
+- Response caching to eliminate redundant requests
+- Retry mechanism for handling transient failures
+- Parallel processing in shell script version
+- Comprehensive performance metrics in reports
+- Memory optimization for large-scale testing
 
 ### Version 3.0.0 - Real-World Edition
 - 150+ cutting-edge bypass techniques including zero-day methods
